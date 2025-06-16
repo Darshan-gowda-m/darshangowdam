@@ -96,7 +96,7 @@ const Home = () => {
                 <FaGithub className="social-icon" />
               </a>
               <a
-                href="https://www.linkedin.com/in/darshan-gowda-m-gowda-m-31361b260/"
+                href="https://www.linkedin.com/in/darshan-gowda-m/"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="social-link"
