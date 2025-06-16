@@ -16,29 +16,53 @@ const Contact = () => {
     email: '',
     message: '',
   })
-  const [isSubmitting, setIsSubmitting] = useState(false)
-  const [submitSuccess, setSubmitSuccess] = useState(false)
+  const [formErrors, setFormErrors] = useState({})
+  const [isSubmitted, setIsSubmitted] = useState(false)
 
   const handleChange = (e) => {
     const { name, value } = e.target
     setFormData((prev) => ({ ...prev, [name]: value }))
+    // Clear error when user types
+    if (formErrors[name]) {
+      setFormErrors((prev) => ({ ...prev, [name]: '' }))
+    }
+  }
+
+  const validateForm = () => {
+    const errors = {}
+    if (!formData.name.trim()) errors.name = 'Name is required'
+    if (!formData.email.trim()) {
+      errors.email = 'Email is required'
+    } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) {
+      errors.email = 'Email is invalid'
+    }
+    if (!formData.message.trim()) errors.message = 'Message is required'
+    setFormErrors(errors)
+    return Object.keys(errors).length === 0
   }
 
   const handleSubmit = (e) => {
     e.preventDefault()
-    setIsSubmitting(true)
 
-    // Simulate form submission
-    setTimeout(() => {
-      setIsSubmitting(false)
-      setSubmitSuccess(true)
-      setFormData({ name: '', email: '', message: '' })
+    if (!validateForm()) return
 
-      // Reset success message after 5 seconds
-      setTimeout(() => {
-        setSubmitSuccess(false)
-      }, 5000)
-    }, 1500)
+    const { name, email, message } = formData
+    const subject = `Message from ${name} (via Portfolio)`
+    const body = `Hi Darshan,\n\n${message}\n\n---\nFrom: ${name}\nEmail: ${email}`
+
+    // Open Gmail compose window
+    window.open(
+      `https://mail.google.com/mail/?view=cm&fs=1&to=darshangowdam2004@gmail.com&su=${encodeURIComponent(
+        subject
+      )}&body=${encodeURIComponent(body)}`,
+      '_blank'
+    )
+
+    setIsSubmitted(true)
+    setFormData({ name: '', email: '', message: '' })
+
+    // Reset submission status after 5 seconds
+    setTimeout(() => setIsSubmitted(false), 5000)
   }
 
   return (
@@ -87,10 +111,10 @@ const Contact = () => {
                 <div className="info-details">
                   <h4 className="info-label">Email</h4>
                   <a
-                    href="mailto:darsangowdam2004@gmail.com"
+                    href="mailto:darshangowdam2004@gmail.com"
                     className="info-value"
                   >
-                    darsangowdam2004@gmail.com
+                    darshangowdam2004@gmail.com
                   </a>
                   <a
                     href="mailto:darshugowda200@gmail.com"
@@ -136,7 +160,7 @@ const Contact = () => {
                   <FaGithub className="social-icon" />
                 </a>
                 <a
-                  href="https://www.linkedin.com/in/darshan-gowda-m-31361b260/"
+                  href="https://www.linkedin.com/in/darshan-gowda-m-gowda-m-31361b260/"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="social-link"
@@ -167,14 +191,14 @@ const Contact = () => {
           >
             <h3 className="form-title">Send me a message</h3>
 
-            {submitSuccess && (
+            {isSubmitted && (
               <motion.div
                 initial={{ opacity: 0, y: -20 }}
                 animate={{ opacity: 1, y: 0 }}
                 className="form-success"
               >
-                Your message has been sent successfully! I'll get back to you
-                soon.
+                Thank you! Your email client should open shortly. If it doesn't,
+                please email me directly at darshangowdam2004@gmail.com
               </motion.div>
             )}
 
@@ -189,10 +213,12 @@ const Contact = () => {
                   name="name"
                   value={formData.name}
                   onChange={handleChange}
-                  className="form-input"
+                  className={`form-input ${formErrors.name ? 'error' : ''}`}
                   placeholder="John Doe"
-                  required
                 />
+                {formErrors.name && (
+                  <span className="error-message">{formErrors.name}</span>
+                )}
               </div>
 
               <div className="form-group">
@@ -205,10 +231,12 @@ const Contact = () => {
                   name="email"
                   value={formData.email}
                   onChange={handleChange}
-                  className="form-input"
+                  className={`form-input ${formErrors.email ? 'error' : ''}`}
                   placeholder="john@example.com"
-                  required
                 />
+                {formErrors.email && (
+                  <span className="error-message">{formErrors.email}</span>
+                )}
               </div>
 
               <div className="form-group">
@@ -221,48 +249,25 @@ const Contact = () => {
                   value={formData.message}
                   onChange={handleChange}
                   rows="5"
-                  className="form-textarea"
+                  className={`form-textarea ${
+                    formErrors.message ? 'error' : ''
+                  }`}
                   placeholder="Write your message here..."
-                  required
                 ></textarea>
+                {formErrors.message && (
+                  <span className="error-message">{formErrors.message}</span>
+                )}
               </div>
 
               <motion.button
                 type="submit"
-                disabled={isSubmitting}
-                className={`form-submit ${isSubmitting ? 'submitting' : ''}`}
-                whileHover={!isSubmitting ? { scale: 1.02 } : {}}
-                whileTap={!isSubmitting ? { scale: 0.98 } : {}}
+                className="form-submit"
+                whileHover={{ scale: 1.02 }}
+                whileTap={{ scale: 0.98 }}
               >
-                {isSubmitting ? (
-                  <span className="submit-loading">
-                    <svg
-                      className="submit-spinner"
-                      xmlns="http://www.w3.org/2000/svg"
-                      fill="none"
-                      viewBox="0 0 24 24"
-                    >
-                      <circle
-                        className="spinner-circle"
-                        cx="12"
-                        cy="12"
-                        r="10"
-                        stroke="currentColor"
-                        strokeWidth="4"
-                      ></circle>
-                      <path
-                        className="spinner-path"
-                        fill="currentColor"
-                        d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
-                      ></path>
-                    </svg>
-                    Sending...
-                  </span>
-                ) : (
-                  <span className="submit-text">
-                    <FaPaperPlane className="submit-icon" /> Send Message
-                  </span>
-                )}
+                <span className="submit-text">
+                  <FaPaperPlane className="submit-icon" /> Send Message
+                </span>
               </motion.button>
             </form>
           </motion.div>
