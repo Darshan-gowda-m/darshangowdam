@@ -81,30 +81,6 @@ const Home = () => {
                 <FaFileDownload className="button-icon" /> Resume
               </a>
             </motion.div>
-
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ delay: 1 }}
-              className="home-social"
-            >
-              <a
-                href="https://github.com/Darshan-gowda-m"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="social-link"
-              >
-                <FaGithub className="social-icon" />
-              </a>
-              <a
-                href="https://www.linkedin.com/in/darshan-gowda-m-gowda-m-31361b260/"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="social-link"
-              >
-                <FaLinkedin className="social-icon" />
-              </a>
-            </motion.div>
           </motion.div>
 
           <motion.div
