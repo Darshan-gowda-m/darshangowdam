@@ -20,7 +20,6 @@ const BackgroundAnimation = ({ darkMode }) => {
         accent: '#aa00ff',
         background: '#f8f9fa',
         grid: 'rgba(0, 85, 255, 0.05)',
-        mouseEffect: 'rgba(0, 85, 255, 0.15)',
       },
       dark: {
         primary: '#3a86ff',
@@ -29,7 +28,6 @@ const BackgroundAnimation = ({ darkMode }) => {
         accent: '#ffbe0b',
         background: '#121212',
         grid: 'rgba(58, 134, 255, 0.05)',
-        mouseEffect: 'rgba(58, 134, 255, 0.15)',
       },
     }
 
@@ -123,6 +121,8 @@ const BackgroundAnimation = ({ darkMode }) => {
           case 'sensor':
             this.drawSensor()
             break
+          default:
+            this.drawGridDot()
         }
 
         ctx.restore()
@@ -310,17 +310,6 @@ const BackgroundAnimation = ({ darkMode }) => {
       }
     }
 
-    // Draw mouse effect
-    const drawMouseEffect = () => {
-      if (mousePos.x && mousePos.y) {
-        ctx.fillStyle =
-          engineeringPalette[darkMode ? 'dark' : 'light'].mouseEffect
-        ctx.beginPath()
-        ctx.arc(mousePos.x, mousePos.y, 50, 0, Math.PI * 2)
-        ctx.fill()
-      }
-    }
-
     // Draw click effect
     const drawClickEffect = () => {
       if (clickEffect) {
@@ -349,7 +338,6 @@ const BackgroundAnimation = ({ darkMode }) => {
       ctx.fillRect(0, 0, canvas.width, canvas.height)
 
       drawGrid()
-      drawMouseEffect()
       drawClickEffect()
 
       // Update and draw elements
