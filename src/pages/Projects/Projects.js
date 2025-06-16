@@ -49,7 +49,7 @@ const Projects = () => {
       description:
         'Comprehensive airline reservation system with real-time seat availability, dynamic pricing, and admin dashboard.',
       github: 'https://github.com/Darshan-gowda-m/flight_booking_system',
-      live: null,
+      live: 'https://flight-booking-system-c0g3.onrender.com/',
       image: flightBookingImg,
       tags: ['HTML', 'CSS', 'JS', 'Node', 'Express', 'MySQL'],
     },
