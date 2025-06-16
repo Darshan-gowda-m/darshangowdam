@@ -181,4 +181,32 @@
 
 .button-icon {
   margin-right: 0.5rem;
+}.projects-grid {
+  @media (max-width: 1200px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @media (max-width: 768px) {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+}
+
+.project-card {
+  @media (max-width: 480px) {
+    border-radius: 0.5rem;
+  }
+}
+
+.project-image {
+  @media (max-width: 1024px) {
+    height: 10rem;
+  }
+}
+
+.project-links {
+  @media (max-width: 480px) {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
 }

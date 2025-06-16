@@ -45,6 +45,8 @@ const Contact = () => {
     <section className="contact">
       <div className="contact-container">
         <div className="contact-header">
+          <br />
+          <br />
           <motion.h2
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}

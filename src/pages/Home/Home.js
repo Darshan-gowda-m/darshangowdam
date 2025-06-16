@@ -15,6 +15,7 @@ const Home = () => {
     <section className="home">
       <div className="home-container">
         <div className="home-content">
+          <br />
           <motion.div
             initial={{ opacity: 0, x: -50 }}
             animate={{ opacity: 1, x: 0 }}
@@ -96,7 +97,7 @@ const Home = () => {
                 <FaGithub className="social-icon" />
               </a>
               <a
-                href="https://www.linkedin.com/in/darshan-gowda-m/"
+                href="https://www.linkedin.com/in/darshan-gowda-m-gowda-m-31361b260/"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="social-link"

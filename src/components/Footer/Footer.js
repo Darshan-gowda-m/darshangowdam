@@ -12,7 +12,13 @@ const Footer = () => {
               <span className="footer-logo-text">DG</span>
             </div>
             <p className="footer-copyright">
-              © {new Date().getFullYear()} Darshan Gowda M. All rights reserved.
+              © {new Date().getFullYear()} Darshan Gowda M
+            </p>
+          </div>
+
+          <div className="footer-made">
+            <p className="made-with">
+              Made with <FaHeart className="heart-icon" /> in India
             </p>
           </div>
 
@@ -35,12 +41,6 @@ const Footer = () => {
             >
               <FaLinkedin className="social-icon" />
             </a>
-          </div>
-
-          <div className="footer-made">
-            <p className="made-with">
-              Made with <FaHeart className="heart-icon" /> in India
-            </p>
           </div>
         </div>
       </div>
