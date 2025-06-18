@@ -172,7 +172,7 @@ const Contact = () => {
 
             <div className="info-resume">
               <a
-                href="https://drive.google.com/file/d/1OymEeXobnjT_gWrXIjU7Ab-ksXGyLN0J/view?usp=sharing"
+                href="https://drive.google.com/file/d/1v5QQjk8UKAWkBYPc057bWyADiBte2IhZ/view?usp=drivesdk"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="resume-button"
