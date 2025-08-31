@@ -10,12 +10,51 @@ import alumniConnectImg from '../../assets/projects/alumni-connect.jpg'
 import flightBookingImg from '../../assets/projects/flight-booking.jpg'
 import brickBreakerImg from '../../assets/projects/brick-breaker.jpg'
 import sudokuImg from '../../assets/projects/sudoku.jpg'
+import loadbalancerimg from '../../assets/projects/loadbalancer.jpg'
+import RLDimg from '../../assets/projects/RLD.jpg'
+import chatappimg from '../../assets/projects/chatapp.jpg'
 
 const Projects = () => {
   const [showMore, setShowMore] = useState(false)
   const [hoveredIndex, setHoveredIndex] = useState(null)
 
-  const projects = [
+ const projects = [
+    {
+      title: 'Rice Leaf Disease Detection',
+      description:
+        'Deep learning project that detects rice leaf diseases using CNN models with image preprocessing and high accuracy classification.',
+      github: 'https://github.com/ShubhamTaple/RiceLeafDiseaseDetection',
+      live: null,
+      image: RLDimg, // add rice leaf disease detection image path here
+      tags: ['Python', 'Deep Learning', 'CNN', 'TensorFlow'],
+    },
+    {
+      title: 'Flight Ticket Management',
+      description:
+        'Comprehensive airline reservation system with real-time seat availability, dynamic pricing, and admin dashboard.',
+      github: 'https://github.com/Darshan-gowda-m/flight_booking_system',
+      live: 'https://flight-booking-system-c0g3.onrender.com/',
+      image: flightBookingImg,
+      tags: ['HTML', 'CSS', 'JS', 'Node', 'Express', 'MySQL'],
+    },
+    {
+      title: 'TCP Load Balancer',
+      description:
+        'Lightweight Python-based load balancer supporting multiple algorithms (Round Robin, Least Connections, Random, IP Hash) with CLI and health checks.',
+      github: 'https://github.com/Darshan-gowda-m/Load-Balancer',
+      live: null,
+      image: loadbalancerimg, // add load balancer image path here
+      tags: ['Python', 'Networking', 'Sockets'],
+    },
+    {
+      title: 'ChatSphere - Multi-Room Chat Application',
+      description:
+        'Feature-rich chat app built with Python and Tkinter supporting multi-room chat, private messaging, file sharing, emojis, and custom colors.',
+      github: 'https://github.com/Darshan-gowda-m/Chat_app',
+      live: null,
+      image: chatappimg, // add chat app image path here
+      tags: ['Python', 'Tkinter', 'Sockets'],
+    },
     {
       title: 'Cloth Manager',
       description:
@@ -45,15 +84,6 @@ const Projects = () => {
       tags: ['MERN Stack', 'WebSockets'],
     },
     {
-      title: 'Flight Ticket Management',
-      description:
-        'Comprehensive airline reservation system with real-time seat availability, dynamic pricing, and admin dashboard.',
-      github: 'https://github.com/Darshan-gowda-m/flight_booking_system',
-      live: 'https://flight-booking-system-c0g3.onrender.com/',
-      image: flightBookingImg,
-      tags: ['HTML', 'CSS', 'JS', 'Node', 'Express', 'MySQL'],
-    },
-    {
       title: 'Brick Breaker',
       description:
         'Classic arcade game with modern physics, power-ups, and progressive difficulty levels built with JavaScript Canvas.',
@@ -71,7 +101,7 @@ const Projects = () => {
       image: sudokuImg,
       tags: ['HTML', 'Algorithms', 'Recursion'],
     },
-  ]
+]
 
   return (
     <section className="projects" id="projects">
