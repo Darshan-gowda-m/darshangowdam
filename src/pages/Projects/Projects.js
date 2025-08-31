@@ -10,9 +10,9 @@ import alumniConnectImg from '../../assets/projects/alumni-connect.jpg'
 import flightBookingImg from '../../assets/projects/flight-booking.jpg'
 import brickBreakerImg from '../../assets/projects/brick-breaker.jpg'
 import sudokuImg from '../../assets/projects/sudoku.jpg'
-import loadbalancerimg from '../../assets/projects/loadbalancer.jpg'
-import RLDimg from '../../assets/projects/RLD.jpg'
-import chatappimg from '../../assets/projects/chatapp.jpg'
+import loadbalancerimg from '../../assets/projects/load_balancer.png'
+import RLDimg from '../../assets/projects/RLD.png'
+import chatappimg from '../../assets/projects/chatapp.png'
 
 const Projects = () => {
   const [showMore, setShowMore] = useState(false)
